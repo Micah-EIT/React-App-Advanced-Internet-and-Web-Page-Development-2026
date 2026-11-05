@@ -49,7 +49,7 @@ function Bookings() {
             <div className='grid grid-cols-2'>
               {loading ? (<p>Retrieving bookings ...</p>) : error ? (<p>Error: {error}</p>) : (
                 bookings.map((booking) => (
-                  <div key={booking.id} class="card me-3 mb-3 p-3">
+                  <div key={booking.id} className="card me-3 mb-3 p-3">
                     <h2 className='mb-3'>{`${booking.title} ${booking.first_name} ${booking.last_name}`}</h2>
                     <div className='d-flex flex-column flex-lg-row'>
                       <div className='col-12 col-lg-4 fs-5'>

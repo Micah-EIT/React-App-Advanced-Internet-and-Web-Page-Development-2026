@@ -1,5 +1,5 @@
 // Imports
-import { useRef, useEffect, useState } from "react";
+import { useState } from "react";
 
 // Component Function
 function CourtesyPhone( { passDataToParent }) {
@@ -31,16 +31,16 @@ function CourtesyPhone( { passDataToParent }) {
     */}
     let updatePhone = (selectedOption) => {
         {/* Update selected phone */}
-        selectedOption == 'none' ? setSelectedPhone(0) : setSelectedPhone(Number(selectedOption)) 
+        selectedOption === 'none' ? setSelectedPhone(0) : setSelectedPhone(Number(selectedOption)) 
 
         {/* Update Bond */}
         let updateId = 0
-        selectedOption == 'none' ? (updateId = 0) : (updateId = Number(selectedOption)) 
+        selectedOption === 'none' ? (updateId = 0) : (updateId = Number(selectedOption)) 
         let updatedPhoneInfo = {
-            bond: courtesyList.filter((item) => {return item.id == updateId})[0].bond 
-            + courtesyList.filter((item) => {return item.id == selectedCharger})[0].bond, 
-            phone: courtesyList.filter(item => {return item.id == updateId})[0].name, 
-            charger: courtesyList.filter(item => {return item.id == selectedCharger})[0].name
+            bond: courtesyList.filter((item) => {return item.id === updateId})[0].bond 
+            + courtesyList.filter((item) => {return item.id === selectedCharger})[0].bond, 
+            phone: courtesyList.filter(item => {return item.id === updateId})[0].name, 
+            charger: courtesyList.filter(item => {return item.id === selectedCharger})[0].name
         }
         passDataToParent(updatedPhoneInfo)
     }
@@ -52,16 +52,16 @@ function CourtesyPhone( { passDataToParent }) {
     */}
     let updateCharger = (selectedOption) => {
         {/* Update selected charger */}
-        selectedOption == 'none' ? setSelectedCharger(0) : setSelectedCharger(Number(selectedOption)) 
+        selectedOption === 'none' ? setSelectedCharger(0) : setSelectedCharger(Number(selectedOption)) 
 
         {/* Update bond */}
         let updateId = 0
-        selectedOption == 'none' ? (updateId = 0) : (updateId = Number(selectedOption)) 
+        selectedOption === 'none' ? (updateId = 0) : (updateId = Number(selectedOption)) 
         let updatedPhoneInfo = {
-            bond: courtesyList.filter((item) => {return item.id == updateId})[0].bond 
-            + courtesyList.filter((item) => {return item.id == selectedPhone})[0].bond, 
-            phone: courtesyList.filter(item => {return item.id == selectedPhone})[0].name, 
-            charger: courtesyList.filter(item => {return item.id == updateId})[0].name
+            bond: courtesyList.filter((item) => {return item.id === updateId})[0].bond 
+            + courtesyList.filter((item) => {return item.id === selectedPhone})[0].bond, 
+            phone: courtesyList.filter(item => {return item.id === selectedPhone})[0].name, 
+            charger: courtesyList.filter(item => {return item.id === updateId})[0].name
         }
         passDataToParent(updatedPhoneInfo)
     }
@@ -72,7 +72,7 @@ function CourtesyPhone( { passDataToParent }) {
         <h2>Courtesy Phone</h2>
         <div className="p-3 col-11">
             <div className="row mb-3">
-                <label for="phone-select" className="col-4 col-form-label">Phone: </label>
+                <label htmlFor="phone-select" className="col-4 col-form-label">Phone: </label>
                 <div className="col-8">
                     <select 
                         name="phone-select" 
@@ -81,9 +81,9 @@ function CourtesyPhone( { passDataToParent }) {
                         onChange={(event) => updatePhone((event.target.value))}>
                             {/* Dynamically add phones from list */}
                             {courtesyList.map((item) => {
-                                if (item.type == 'phone' || item.type == 'none') {
+                                if (item.type === 'phone' || item.type === 'none') {
                                     return (
-                                        <option value={item.id}>{item.name}</option>
+                                        <option key={item.id} value={item.id}>{item.name}</option>
                                     )
                                 }
                             })}
@@ -92,7 +92,7 @@ function CourtesyPhone( { passDataToParent }) {
             </div>
             <br/>
             <div className="row mb-3">
-                <label for="charger-select" className="col-4 col-form-label">Charger: </label>
+                <label htmlFor="charger-select" className="col-4 col-form-label">Charger: </label>
                 <div className="col-8">
                     <select 
                         name="charger-select" 
@@ -101,9 +101,9 @@ function CourtesyPhone( { passDataToParent }) {
                         onChange={(event) => updateCharger((event.target.value))}>
                             {/* Dynamically add chargers from list */}
                             {courtesyList.map((item) => {
-                                if (item.type == 'charger' || item.type == 'none') {
+                                if (item.type === 'charger' || item.type === 'none') {
                                     return (
-                                        <option value={item.id}>{item.name}</option>
+                                        <option key={item.id} value={item.id}>{item.name}</option>
                                     )
                                 }
                             })}
@@ -120,18 +120,18 @@ function CourtesyPhone( { passDataToParent }) {
                 </thead>
                 <tbody>
                     {/* Adds the selected phone to the item table */}
-                    {selectedPhone == 0 ? (null) : (
+                    {selectedPhone === 0 ? (null) : (
                         <tr>
-                            <td>{courtesyList.filter(item => {return item.id == selectedPhone})[0].name}</td>
-                            <td>${courtesyList.filter(item => {return item.id == selectedPhone})[0].bond}</td>
+                            <td>{courtesyList.filter(item => {return item.id === selectedPhone})[0].name}</td>
+                            <td>${courtesyList.filter(item => {return item.id === selectedPhone})[0].bond}</td>
                         </tr>
                         )
                     }
                     {/* Adds the selected charger to the item table */}
-                    {selectedCharger == 0 ? (null) : (
+                    {selectedCharger === 0 ? (null) : (
                         <tr>
-                            <td>{courtesyList.filter(item => {return item.id == selectedCharger})[0].name}</td>
-                            <td>${courtesyList.filter(item => {return item.id == selectedCharger})[0].bond}</td>
+                            <td>{courtesyList.filter(item => {return item.id === selectedCharger})[0].name}</td>
+                            <td>${courtesyList.filter(item => {return item.id === selectedCharger})[0].bond}</td>
                         </tr>
                         )
                     }

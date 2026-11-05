@@ -13,7 +13,7 @@ function FAQs() {
     // Functions and methods
     const searchFAQs = (keyword, questionList) => {
         {/* Return all questions if no keyword has been entered */}
-        if (keyword == '') {
+        if (keyword === '') {
             return questionList
         }
 

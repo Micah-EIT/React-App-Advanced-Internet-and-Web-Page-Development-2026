@@ -74,7 +74,7 @@ function Home( ) {
         // Check that form data is valid
         let validationError = validateFormData(bookingData)
 
-        if (validationError != "") {
+        if (validationError !== "") {
             alert(`Error: ${validationError}`)
             return
         }
@@ -116,7 +116,7 @@ function Home( ) {
         console.log(bookingData)
         // Check required fields have data
         requiredFields.forEach((field) => {
-            if (bookingData[field] == null || bookingData[field] == "") {
+            if (bookingData[field] === null || bookingData[field] === "") {
                 return `Please fill in all required fields (marked with *). ${field} is not filled in.`
             }
         })
@@ -144,7 +144,7 @@ function Home( ) {
         }
 
         // Domain checks
-        if (bookingData.customer_type != "consumer" && bookingData.customer_type != "business") {
+        if (bookingData.customer_type !== "consumer" && bookingData.customer_type !== "business") {
             return "Customer type must be consumer or business"
         }
         try {

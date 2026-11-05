@@ -16,7 +16,7 @@ function CustomerDetail( { passDataToParent } ) {
         <fieldset className="border border-secondary col-10 ms-2 me-2" required>
             <legend className="fs-5 float-none w-auto mx-2">Customer type *</legend>
             <div className="m-2">
-                <label className="form-check-label me-2" for="">Consumer: </label>
+                <label className="form-check-label me-2" htmlFor="">Consumer: </label>
                 <input 
                     className="form-check-input" 
                     type="radio" name="customer-type" 
@@ -25,7 +25,7 @@ function CustomerDetail( { passDataToParent } ) {
                     onClick={(event) => updateCustomerType(event.target.value)} />
             </div>
             <div className="m-2">
-                <label className="form-check-label me-2" for="">Business: </label>
+                <label className="form-check-label me-2" htmlFor="">Business: </label>
                 <input 
                     className="form-check-input" 
                     type="radio" name="customer-type" 
@@ -37,9 +37,9 @@ function CustomerDetail( { passDataToParent } ) {
 
         <div className="p-3 col-11">
             <div className="row mb-3">
-                <label for="title-select" class="col-4 col-form-label">Title: * </label>
-                <div class="col-8">
-                    <select name="title-select" id="title-select" class="form-select" required>
+                <label htmlFor="title-select" className="col-4 col-form-label">Title: * </label>
+                <div className="col-8">
+                    <select name="title-select" id="title-select" className="form-select" required>
                         <option value="Mr">Mr</option>
                         <option value="Mrs">Mrs</option>
                         <option value="Ms">Ms</option>
@@ -49,7 +49,7 @@ function CustomerDetail( { passDataToParent } ) {
                 </div>
             </div>
             <div className="row mb-3">
-                <label for="fname-input" className="col-4 col-form-label">First name: * </label>
+                <label htmlFor="fname-input" className="col-4 col-form-label">First name: * </label>
                 <div className="col-8">
                     <input type="text" 
                         className="form-control" 
@@ -63,7 +63,7 @@ function CustomerDetail( { passDataToParent } ) {
                 </div>
             </div>
             <div className="row mb-3">
-                <label for="lname-input" className="col-4 col-form-label">Last name: *</label>
+                <label htmlFor="lname-input" className="col-4 col-form-label">Last name: *</label>
                 <div className="col-8">
                     <input type="text" 
                         className="form-control" 
@@ -77,25 +77,25 @@ function CustomerDetail( { passDataToParent } ) {
                 </div>
             </div>
             <div className="row mb-3">
-                <label for="street-input" className="col-4 col-form-label">Street: *</label>
+                <label htmlFor="street-input" className="col-4 col-form-label">Street: *</label>
                 <div className="col-8">
                     <input type="text" className="form-control" id="street-input" name="street-input" required/>
                 </div>
             </div>
             <div className="row mb-3">
-                <label for="suburb-input" className="col-4 col-form-label">Suburb: </label>
+                <label htmlFor="suburb-input" className="col-4 col-form-label">Suburb: </label>
                 <div className="col-8">
                     <input type="text" className="form-control" id="suburb-input" name="suburb-input"/>
                 </div>
             </div>
             <div className="row mb-3">
-                <label for="city-input" className="col-4 col-form-label">City: *</label>
+                <label htmlFor="city-input" className="col-4 col-form-label">City: *</label>
                 <div className="col-8">
                     <input type="text" className="form-control" id="city-input" name="city-input" required/>
                 </div>
             </div>
             <div className="row mb-3">
-                <label for="postcode-input" className="col-4 col-form-label">Post Code: </label>
+                <label htmlFor="postcode-input" className="col-4 col-form-label">Post Code: </label>
                 <div className="col-8">
                     <input 
                         type="text" 
@@ -108,7 +108,7 @@ function CustomerDetail( { passDataToParent } ) {
                 </div>
             </div>
             <div className="row mb-3">
-                <label for="phone-number-input" className="col-4 col-form-label">Phone Number: *</label>
+                <label htmlFor="phone-number-input" className="col-4 col-form-label">Phone Number: *</label>
                 <div className="col-8">
                     <input 
                         type="text" 
@@ -122,7 +122,7 @@ function CustomerDetail( { passDataToParent } ) {
                 </div>
             </div>
             <div className="row mb-3">
-                <label for="email-input" className="col-4 col-form-label">Email: *</label>
+                <label htmlFor="email-input" className="col-4 col-form-label">Email: *</label>
                 <div className="col-8">
                     <input type="email" className="form-control" id="email-input" name="email-input" required/>
                 </div>

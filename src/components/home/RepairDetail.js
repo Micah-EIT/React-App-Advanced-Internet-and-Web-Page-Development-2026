@@ -34,7 +34,7 @@ function RepairDetail( { passDataToParent } ) {
         <h2>Repair Details</h2>
         <div className="p-3 col-11">
             <div className="row mb-3">
-                <label for="purchase-date-input" className="col-4 col-form-label">Purchase Date: *</label>
+                <label htmlFor="purchase-date-input" className="col-4 col-form-label">Purchase Date: *</label>
                 <div className="col-8">
                     <input 
                         type="date" 
@@ -48,7 +48,7 @@ function RepairDetail( { passDataToParent } ) {
                 </div>
             </div>
             <div className="row">
-                <label for="repair-date-input" className="col-4 col-form-label">Repair Date: *</label>
+                <label htmlFor="repair-date-input" className="col-4 col-form-label">Repair Date: *</label>
                 <div className="col-8">
                     <input 
                         type="datetime-local" 
@@ -65,7 +65,7 @@ function RepairDetail( { passDataToParent } ) {
         <fieldset className="border border-secondary col-10 ms-2 me-2" required>
             <legend className="fs-5 float-none w-auto mx-2">Under Warranty</legend>
             <div className="d-flex flex-row p-2">
-                <label for="warranty-input"> Warranty: </label>
+                <label htmlFor="warranty-input"> Warranty: </label>
                 <div className="ms-2">
                     <input 
                         type="checkbox" 
@@ -79,7 +79,7 @@ function RepairDetail( { passDataToParent } ) {
 
         <div className="p-3 col-11">
             <div className="row mb-3">
-                <label for="imei-input" className="col-4 col-form-label">IMEI Number: *</label>
+                <label htmlFor="imei-input" className="col-4 col-form-label">IMEI Number: *</label>
                 <div className="col-8">
                     <input 
                         type="text" 
@@ -94,9 +94,9 @@ function RepairDetail( { passDataToParent } ) {
             </div>
 
             <div className="row mb-3">
-                <label for="make-select" class="col-4 col-form-label">Make: *</label>
-                <div class="col-8">
-                    <select name="make-select" id="make-select" class="form-select" required>
+                <label htmlFor="make-select" className="col-4 col-form-label">Make: *</label>
+                <div className="col-8">
+                    <select name="make-select" id="make-select" className="form-select" required>
                         <option value="Apple">Apple</option>
                         <option value="LG">LG</option>
                         <option value="Motorola">Motorola</option>
@@ -109,16 +109,16 @@ function RepairDetail( { passDataToParent } ) {
             </div>
             
             <div className="row mb-3">
-                <label for="model-number-input" className="col-4 col-form-label">Model number: </label>
+                <label htmlFor="model-number-input" className="col-4 col-form-label">Model number: </label>
                 <div className="col-8">
                     <input type="text" className="form-control" id="model-number-input" name="model-number-input"/>
                 </div>
             </div>
 
             <div className="row mb-3">
-                <label for="fault-select" class="col-4 col-form-label">Fault Category: *</label>
-                <div class="col-8">
-                    <select name="fault-select" id="fault-select" class="form-select" required>
+                <label htmlFor="fault-select" className="col-4 col-form-label">Fault Category: *</label>
+                <div className="col-8">
+                    <select name="fault-select" id="fault-select" className="form-select" required>
                         <option value="Battery">Battery</option>
                         <option value="Charging">Charging</option>
                         <option value="Screen">Screen</option>
@@ -130,7 +130,7 @@ function RepairDetail( { passDataToParent } ) {
             </div>
             
             <div className="row mb-3">
-                <label for="description-input" className="col-4 col-form-label">Description: *</label>
+                <label htmlFor="description-input" className="col-4 col-form-label">Description: *</label>
                 <div className="col-8">
                     <textarea id="description-input" className="form-control" name="description-input" rows="4" cols="50" required></textarea>
                 </div>

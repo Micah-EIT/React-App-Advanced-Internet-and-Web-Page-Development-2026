@@ -16,7 +16,7 @@ function Cost(props) {
     const calculateTotal = (hasWarranty, customerType, bond) => {
         let total = 0
 
-        if (customerType != 'business') {
+        if (customerType !== 'business') {
             total += bond
         }
         
@@ -32,7 +32,7 @@ function Cost(props) {
     <>
         <div className="d-flex flex-column align-items-center justify-content-center col-12">
             <div className="row mb-3 col-10">
-                <label for="bond-display" className="col-4 col-form-label">Bond: </label>
+                <label htmlFor="bond-display" className="col-4 col-form-label">Bond: </label>
                 <div className="col-8">
                     {/* Checks if the customer type is business or consumer. 
                     If the customer is a consumer, the bond total (sum of the bond for the selected phone and selected phone charger) is displayed
@@ -42,12 +42,12 @@ function Cost(props) {
                         className="form-control" 
                         id="bond-display" 
                         name="bond-display" 
-                        value={props.sharedPropCustomerType == 'business' ? '$0': `$${props.sharedPropBond}`} 
+                        value={props.sharedPropCustomerType === 'business' ? '$0': `$${props.sharedPropBond}`} 
                         readOnly/>
                 </div>
             </div>
             <div className="row mb-3 col-10">
-                <label for="service-fee-display" className="col-4 col-form-label">Service Fee: </label>
+                <label htmlFor="service-fee-display" className="col-4 col-form-label">Service Fee: </label>
                 <div className="col-8">
                     {/*If the phone isn't covered by a warranty, charge a service fee of $85*/}
                     <input 
@@ -55,12 +55,12 @@ function Cost(props) {
                         className="form-control" 
                         id="service-fee-display" 
                         name="service-fee-display"
-                        value={props.sharedPropWarranty == true ? '$0' : '$85'} 
+                        value={props.sharedPropWarranty === true ? '$0' : '$85'} 
                         readOnly/>
                 </div>
             </div>
             <div className="row mb-3 col-10">
-                <label for="total-display" className="col-4 col-form-label">Total: </label>
+                <label htmlFor="total-display" className="col-4 col-form-label">Total: </label>
                 <div className="col-8">
                     {/* Calculate total (total bond + service fee) without GST */}
                     <input 
@@ -73,7 +73,7 @@ function Cost(props) {
                 </div>
             </div>
             <div className="row mb-3 col-10">
-                <label for="gst-display" className="col-4 col-form-label">GST: </label>
+                <label htmlFor="gst-display" className="col-4 col-form-label">GST: </label>
                 <div className="col-8">
                     {/* Calculate 15% GST */}
                     <input 
@@ -86,7 +86,7 @@ function Cost(props) {
                 </div>
             </div>
             <div className="row mb-3 col-10">
-                <label for="total-gst-display" className="col-4 col-form-label">Total(+GST): </label>
+                <label htmlFor="total-gst-display" className="col-4 col-form-label">Total(+GST): </label>
                 <div className="col-8">
                     {/* Calculate total (total bond + service fee) with 15% GST */}
                     <input 
