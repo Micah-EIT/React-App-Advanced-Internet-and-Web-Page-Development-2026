@@ -15,7 +15,7 @@ function App() {
   // UI
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Header/>
         <main className='overflow-hidden'>
           {/* Different views, header & footer stay the same */}
@@ -27,7 +27,7 @@ function App() {
           </Routes>
         </main>
         <Footer/>
-      </BrowserRouter>
+      </HashRouter>
 
 
     </>
