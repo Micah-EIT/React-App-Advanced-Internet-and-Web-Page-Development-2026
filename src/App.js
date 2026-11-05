@@ -5,7 +5,7 @@ import Home from './components/home/Home.js';
 import AdvancedJS from './components/AdvancedJS.js';
 import FAQs from './components/FAQs.js';
 import Bookings from './components/Bookings.js';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   // States
