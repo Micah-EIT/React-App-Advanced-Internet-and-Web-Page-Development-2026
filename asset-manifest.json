@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/css/main.f855e6bc.css",
-    "main.js": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/main.690149e2.js",
+    "main.js": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/main.cb8cbc9d.js",
     "static/js/453.6286294b.chunk.js": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/453.6286294b.chunk.js",
     "index.html": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/index.html",
     "main.f855e6bc.css.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/css/main.f855e6bc.css.map",
-    "main.690149e2.js.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/main.690149e2.js.map",
+    "main.cb8cbc9d.js.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/main.cb8cbc9d.js.map",
     "453.6286294b.chunk.js.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/453.6286294b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.690149e2.js"
+    "static/js/main.cb8cbc9d.js"
   ]
 }
