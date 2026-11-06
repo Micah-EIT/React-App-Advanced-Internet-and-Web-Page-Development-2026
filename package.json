@@ -15,7 +15,7 @@
     "renovate": "^44.221.0",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://micah-eit.github.io/React-App-Advanced-Internet-and-Web-Page-Development-2026/",
+  "homepage": "https://micah-eit.github.io/React-App-Advanced-Internet-and-Web-Page-Development-2026",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
