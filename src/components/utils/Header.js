@@ -1,4 +1,5 @@
 // Imports
+import { Link } from "react-router";
 
 // Functions
 function Header() {
@@ -32,8 +33,8 @@ function Header() {
                     <h1 className="p-3 text-center text-white">Project 2: Phone Fix Booking System</h1>
                 </div>
                 <div className="d-flex col-12 col-lg-4 flex-column flex-md-row">
-                    <a href="/" className="btn h-25 col-12 col-md-6 text-white" style={homeButtonStyle}>Home</a>
-                    <a href="/advancedjs" className="btn h-25 col-12 col-md-6 text-white" style={extensionButtonStyle}>Extension</a>
+                    <Link to="/" className="btn h-25 col-12 col-md-6 text-white" style={homeButtonStyle}>Home</Link>
+                    <Link to="/advancedjs" className="btn h-25 col-12 col-md-6 text-white" style={extensionButtonStyle}>Extension</Link>
                 </div>
             </div>
         </header>
