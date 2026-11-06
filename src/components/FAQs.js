@@ -13,15 +13,15 @@ function FAQs() {
     // Functions and methods
     const searchFAQs = (keyword, questionList) => {
         {/* Return all questions if no keyword has been entered */}
-        if (keyword === '') {
-            return questionList
+        if (keyword) {
+            {/* Return all questions where the question or answer contains the keyword */}
+            let filteredQuestions = questionList.filter( (question) => 
+                (question.question.toLowerCase().includes(keyword) || question.answer.toLowerCase().includes(keyword)))
+            
+            return filteredQuestions
         }
 
-        {/* Return all questions where the question or answer contains the keyword */}
-        let filteredQuestions = questionList.filter( (question) => 
-            (question.question.toLowerCase().includes(keyword) || question.answer.toLowerCase().includes(keyword)))
-        
-        return filteredQuestions
+        return questionList
     }
 
     // UI
