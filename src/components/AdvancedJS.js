@@ -1,3 +1,7 @@
+// Imports
+import UploadFile from "./advancedJS/uploadPhoto.js"
+import PhotoGallery from "./advancedJS/uploadedPhotoGallery.js"
+
 // Component Function
 function AdvancedJS() {
     // States
@@ -54,9 +58,11 @@ function AdvancedJS() {
                     </div>
                 </div>
                 <div className="accordion-item">
-                    <div id="collapseDemo3" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div id="collapseDemo3" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div className="accordion-body">
-                            demo 3                        </div>
+                            <UploadFile/>
+                            <PhotoGallery/>                     
+                        </div>
                     </div>
                 </div>
                 <div className="accordion-item">

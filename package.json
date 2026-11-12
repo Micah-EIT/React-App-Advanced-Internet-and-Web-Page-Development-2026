@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fullcalendar/react": "^7.1.4",
     "@mapbox/search-js-react": "^1.6.0",
     "@supabase/supabase-js": "^2.118.0",
     "@testing-library/dom": "^10.4.2",
@@ -14,6 +15,7 @@
     "react-router-dom": "^7.18.4",
     "react-scripts": "5.0.1",
     "renovate": "^44.221.0",
+    "temporal-polyfill": "^1.0.8",
     "web-vitals": "^2.1.4"
   },
   "homepage": "https://micah-eit.github.io/React-App-Advanced-Internet-and-Web-Page-Development-2026",

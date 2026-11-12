@@ -8,7 +8,7 @@ function Bookings() {
     // State
     const [sortBy, setSortBy] = useState("id");
     const [sortAscDesc, setSortAscDesc] = useState("Asc");
-    const [filterWarranty, setFilterWarranty] = useState(false);
+    const [filterWarranty, setFilterWarranty] = useState("All");
     const [filterMake, setFilterMake] = useState("All");
     const [filterFault, setFilterFault] = useState("All");
 
@@ -55,9 +55,12 @@ function Bookings() {
       */}
     const searchBookings = (keyword, bookings) => {
         {/* Return all questions if no keyword has been entered */}
+        let filteredBookings = []
+
         if (keyword) {
             {/* Return all questions where the question or answer contains the keyword */}
             let filteredBookings = []
+
             bookings.forEach( (booking) => 
             {
                 if (containsKeyword(booking, keyword)) {
@@ -66,7 +69,6 @@ function Bookings() {
             })
 
             setBookingsToDisplay(filteredBookings)
-            filterBookings(filteredBookings)
             return
         }
         
@@ -89,21 +91,23 @@ function Bookings() {
     }
 
     const sortBookings = (sortBy, sortAscDesc, bookings) => {
-        let sortedBookings = []
+        let sortedBookings = bookings
 
-        if (sortBy.includes('name')) {
-          sortedBookings = bookings.sort(
-            (booking1, booking2) => (booking1[sortBy].localeCompare(booking2[sortBy]))
-          );
-        }
-        else {
-          sortedBookings = bookings.sort(
-            (booking1, booking2) => (booking1[sortBy] > booking2[sortBy]) ? 1: -1
-          );
-        }
+        if (sortedBookings) {
+            if (sortBy.includes('name')) {
+              sortedBookings = sortedBookings.sort(
+                (booking1, booking2) => (booking1[sortBy].localeCompare(booking2[sortBy]))
+              );
+            }
+            else {
+              sortedBookings = sortedBookings.sort(
+                (booking1, booking2) => (booking1[sortBy] > booking2[sortBy]) ? 1: -1
+              );
+            }
 
-        if (sortAscDesc === 'Desc') {
-            sortedBookings = sortedBookings.reverse();
+            if (sortAscDesc === 'Desc') {
+                sortedBookings = sortedBookings.reverse();
+            }
         }
 
         setBookingsToDisplay(sortedBookings)
@@ -113,7 +117,7 @@ function Bookings() {
         let filteredBookings = bookings
 
         if (warranty !== 'All') {
-            filteredBookings = filteredBookings.filter((booking) => booking.has_warranty.toString() === warranty);
+            filteredBookings = bookings.filter((booking) => booking.has_warranty.toString() === warranty);
         }
 
         if (make !== 'All') {
@@ -184,8 +188,8 @@ function Bookings() {
                         <li className='d-flex flex-row align-items-center mb-2'>
                             Warranty: 
                             <select
-                              id="sort-by-select"
-                              name="sort-by-select"
+                              id="sort-warranty-select"
+                              name="sort-warranty-select"
                               className='form-control ms-2' 
                               onChange={(event) => {
                                   setFilterWarranty(event.target.value); 
@@ -199,8 +203,8 @@ function Bookings() {
                         <li className='d-flex flex-row align-items-center mb-2'>
                             Make:
                             <select
-                            id="filter-by-select"
-                            name="filter-by-select"
+                            id="filter-make-select"
+                            name="filter-make-select"
                             className='form-control ms-2'
                             onChange={(event) => {
                                 setFilterMake(event.target.value); 
@@ -215,8 +219,8 @@ function Bookings() {
                         <li className='d-flex flex-row align-items-center mb-2'>
                             Fault
                             <select
-                            id="filter-by-select"
-                            name="filter-by-select"
+                            id="filter-fault-select"
+                            name="filter-fault-select"
                             className='form-control ms-2'
                             onChange={(event) => {
                                 setFilterFault(event.target.value); 
