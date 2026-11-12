@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/css/main.f855e6bc.css",
-    "main.js": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/main.e89486b8.js",
-    "static/js/453.6286294b.chunk.js": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/453.6286294b.chunk.js",
+    "main.css": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/css/main.f1aad447.css",
+    "main.js": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/main.641c49a3.js",
+    "static/js/453.4b864a3e.chunk.js": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/453.4b864a3e.chunk.js",
     "index.html": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/index.html",
-    "main.f855e6bc.css.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/css/main.f855e6bc.css.map",
-    "main.e89486b8.js.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/main.e89486b8.js.map",
-    "453.6286294b.chunk.js.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/453.6286294b.chunk.js.map"
+    "main.f1aad447.css.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/css/main.f1aad447.css.map",
+    "main.641c49a3.js.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/main.641c49a3.js.map",
+    "453.4b864a3e.chunk.js.map": "/React-App-Advanced-Internet-and-Web-Page-Development-2026/static/js/453.4b864a3e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.e89486b8.js"
+    "static/css/main.f1aad447.css",
+    "static/js/main.641c49a3.js"
   ]
 }
