@@ -1,4 +1,5 @@
 // Imports
+import { AddressAutofill } from '@mapbox/search-js-react';
 
 // Component Function
 function CustomerDetail( { passDataToParent } ) {
@@ -76,22 +77,25 @@ function CustomerDetail( { passDataToParent } ) {
                         />
                 </div>
             </div>
+            <AddressAutofill
+                accessToken='pk.eyJ1IjoibWljYWgtZWl0IiwiYSI6ImNtd2N2cTIyaTA3YjUyeHB2N3k5cHJobzEifQ.S0WkdFTqMr4shcHPh15nhQ'
+            >
             <div className="row mb-3">
                 <label htmlFor="street-input" className="col-4 col-form-label">Street: *</label>
                 <div className="col-8">
-                    <input type="text" className="form-control" id="street-input" name="street-input" required/>
+                    <input type="text" className="form-control" id="street-input" name="street-input" autocomplete="address-line1" required/>
                 </div>
             </div>
             <div className="row mb-3">
                 <label htmlFor="suburb-input" className="col-4 col-form-label">Suburb: </label>
                 <div className="col-8">
-                    <input type="text" className="form-control" id="suburb-input" name="suburb-input"/>
+                    <input type="text" className="form-control" id="suburb-input" name="suburb-input" autocomplete="address-line2"/>
                 </div>
             </div>
             <div className="row mb-3">
                 <label htmlFor="city-input" className="col-4 col-form-label">City: *</label>
                 <div className="col-8">
-                    <input type="text" className="form-control" id="city-input" name="city-input" required/>
+                    <input type="text" className="form-control" id="city-input" name="city-input" autocomplete="address-level2" required/>
                 </div>
             </div>
             <div className="row mb-3">
@@ -102,11 +106,13 @@ function CustomerDetail( { passDataToParent } ) {
                         className="form-control" 
                         id="postcode-input" 
                         name="postcode-input" 
+                        autocomplete="postal-code"
                         pattern="[0-9]{4}" 
                         title="Postcode must be a 4 digit number" 
                         onInput={(e) => e.target.value.replace(/[0-9]{4}/g, '')}/>
                 </div>
             </div>
+            </AddressAutofill>
             <div className="row mb-3">
                 <label htmlFor="phone-number-input" className="col-4 col-form-label">Phone Number: *</label>
                 <div className="col-8">
