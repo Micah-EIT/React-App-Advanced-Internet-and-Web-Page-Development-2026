@@ -1,3 +1,6 @@
+// Import
+import dropdownItems from "../data/dropdownItems.json"
+
 function RepairDetail( { passDataToParent } ) {
     // States
     // Data
@@ -97,13 +100,9 @@ function RepairDetail( { passDataToParent } ) {
                 <label htmlFor="make-select" className="col-4 col-form-label">Make: *</label>
                 <div className="col-8">
                     <select name="make-select" id="make-select" className="form-select" required>
-                        <option value="Apple">Apple</option>
-                        <option value="LG">LG</option>
-                        <option value="Motorola">Motorola</option>
-                        <option value="Nokia">Nokia</option>
-                        <option value="Samsung">Samsung</option>
-                        <option value="Sony">Sony</option>
-                        <option value="Other">Other</option>
+                        {dropdownItems['make'].map((make) => {
+                            return (<option key={make} value={make}>{make}</option>)
+                        })}
                     </select>
                 </div>
             </div>
@@ -119,12 +118,9 @@ function RepairDetail( { passDataToParent } ) {
                 <label htmlFor="fault-select" className="col-4 col-form-label">Fault Category: *</label>
                 <div className="col-8">
                     <select name="fault-select" id="fault-select" className="form-select" required>
-                        <option value="Battery">Battery</option>
-                        <option value="Charging">Charging</option>
-                        <option value="Screen">Screen</option>
-                        <option value="SD-Storage">SD-Storage</option>
-                        <option value="Software">Software</option>
-                        <option value="Other">Other</option>
+                        {dropdownItems['fault'].map((fault) => {
+                            return (<option key={fault} value={fault}>{fault}</option>)
+                        })}
                     </select>
                 </div>
             </div>

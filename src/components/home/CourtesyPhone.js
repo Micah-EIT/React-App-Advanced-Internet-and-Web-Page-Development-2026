@@ -1,5 +1,6 @@
 // Imports
 import { useState } from "react";
+import dropdownItems from "../data/dropdownItems.json"
 
 // Component Function
 function CourtesyPhone( { passDataToParent }) {
@@ -8,19 +9,6 @@ function CourtesyPhone( { passDataToParent }) {
     const [selectedCharger, setSelectedCharger] = useState(0);
 
     // Data
-    let courtesyList = [
-        {id: 0, type: 'none', name: 'none', bond: 0},
-        {id: 1, type: 'phone', name: 'iphone 10', bond: 275},
-        {id: 2, type: 'phone', name: 'iphone 14', bond: 300},
-        {id: 3, type: 'phone', name: 'iphone 16', bond: 500},
-        {id: 4, type: 'phone', name: 'samsung galaxy', bond: 200},
-        {id: 5, type: 'phone', name: 'nokia', bond: 150},
-        {id: 6, type: 'phone', name: 'xiaomi', bond: 100},
-        {id: 7, type: 'charger', name: 'iphone charger', bond: 45},
-        {id: 8, type: 'charger', name: 'samsung charger', bond: 30},
-        {id: 9, type: 'charger', name: 'nokia charger', bond: 25},
-        {id: 10, type: 'charger', name: 'xiaomi charger', bond: 25}
-    ];
 
     // Functions and methods
 
@@ -37,10 +25,10 @@ function CourtesyPhone( { passDataToParent }) {
         let updateId = 0
         selectedOption === 'none' ? (updateId = 0) : (updateId = Number(selectedOption)) 
         let updatedPhoneInfo = {
-            bond: courtesyList.filter((item) => {return item.id === updateId})[0].bond 
-            + courtesyList.filter((item) => {return item.id === selectedCharger})[0].bond, 
-            phone: courtesyList.filter(item => {return item.id === updateId})[0].name, 
-            charger: courtesyList.filter(item => {return item.id === selectedCharger})[0].name
+            bond: dropdownItems['courtesyItems'].filter((item) => {return item.id === updateId})[0].bond 
+            + dropdownItems['courtesyItems'].filter((item) => {return item.id === selectedCharger})[0].bond, 
+            phone: dropdownItems['courtesyItems'].filter(item => {return item.id === updateId})[0].name, 
+            charger: dropdownItems['courtesyItems'].filter(item => {return item.id === selectedCharger})[0].name
         }
         passDataToParent(updatedPhoneInfo)
     }
@@ -58,10 +46,10 @@ function CourtesyPhone( { passDataToParent }) {
         let updateId = 0
         selectedOption === 'none' ? (updateId = 0) : (updateId = Number(selectedOption)) 
         let updatedPhoneInfo = {
-            bond: courtesyList.filter((item) => {return item.id === updateId})[0].bond 
-            + courtesyList.filter((item) => {return item.id === selectedPhone})[0].bond, 
-            phone: courtesyList.filter(item => {return item.id === selectedPhone})[0].name, 
-            charger: courtesyList.filter(item => {return item.id === updateId})[0].name
+            bond: dropdownItems['courtesyItems'].filter((item) => {return item.id === updateId})[0].bond 
+            + dropdownItems['courtesyItems'].filter((item) => {return item.id === selectedPhone})[0].bond, 
+            phone: dropdownItems['courtesyItems'].filter(item => {return item.id === selectedPhone})[0].name, 
+            charger: dropdownItems['courtesyItems'].filter(item => {return item.id === updateId})[0].name
         }
         passDataToParent(updatedPhoneInfo)
     }
@@ -80,7 +68,7 @@ function CourtesyPhone( { passDataToParent }) {
                         className="form-select"
                         onChange={(event) => updatePhone((event.target.value))}>
                             {/* Dynamically add phones from list */}
-                            {courtesyList.map((item) => {
+                            {dropdownItems['courtesyItems'].map((item) => {
                                 if (item.type === 'phone' || item.type === 'none') {
                                     return (
                                         <option key={item.id} value={item.id}>{item.name}</option>
@@ -100,7 +88,7 @@ function CourtesyPhone( { passDataToParent }) {
                         className="form-select"
                         onChange={(event) => updateCharger((event.target.value))}>
                             {/* Dynamically add chargers from list */}
-                            {courtesyList.map((item) => {
+                            {dropdownItems['courtesyItems'].map((item) => {
                                 if (item.type === 'charger' || item.type === 'none') {
                                     return (
                                         <option key={item.id} value={item.id}>{item.name}</option>
@@ -122,16 +110,16 @@ function CourtesyPhone( { passDataToParent }) {
                     {/* Adds the selected phone to the item table */}
                     {selectedPhone === 0 ? (null) : (
                         <tr>
-                            <td>{courtesyList.filter(item => {return item.id === selectedPhone})[0].name}</td>
-                            <td>${courtesyList.filter(item => {return item.id === selectedPhone})[0].bond}</td>
+                            <td>{dropdownItems['courtesyItems'].filter(item => {return item.id === selectedPhone})[0].name}</td>
+                            <td>${dropdownItems['courtesyItems'].filter(item => {return item.id === selectedPhone})[0].bond}</td>
                         </tr>
                         )
                     }
                     {/* Adds the selected charger to the item table */}
                     {selectedCharger === 0 ? (null) : (
                         <tr>
-                            <td>{courtesyList.filter(item => {return item.id === selectedCharger})[0].name}</td>
-                            <td>${courtesyList.filter(item => {return item.id === selectedCharger})[0].bond}</td>
+                            <td>{dropdownItems['courtesyItems'].filter(item => {return item.id === selectedCharger})[0].name}</td>
+                            <td>${dropdownItems['courtesyItems'].filter(item => {return item.id === selectedCharger})[0].bond}</td>
                         </tr>
                         )
                     }
