@@ -55,7 +55,6 @@ function UploadFile(file) {
     // UI
     return (
         <div>
-            <h1>Demo 3</h1>
             <p>Upload a photo</p>
             <form onSubmit={handleSubmit} className="d-flex flex-column">
                 <input type="file" name="fileInput" className="form-control mb-2"></input>

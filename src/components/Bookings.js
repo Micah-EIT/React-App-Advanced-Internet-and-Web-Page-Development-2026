@@ -1,7 +1,7 @@
 // Imports
-import { supabase } from './supabaseClient.js';
 import { useEffect, useState } from 'react';
 import dropdownItems from "./data/dropdownItems.json";
+import { fetchBookings } from '../fetchBookings';
 
 // Component Function
 function Bookings() {
@@ -12,46 +12,37 @@ function Bookings() {
     const [filterMake, setFilterMake] = useState("All");
     const [filterFault, setFilterFault] = useState("All");
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const [bookings, setBookings] = useState([]);
     const [bookingsToDisplay, setBookingsToDisplay] = useState([]);
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState('')
 
     // Functions
-    {/* 
-      * Fetches bookings from the Supabase database
-      */}
-    const fetchBookings = async () => {
-      try {
-        // Start loading while waiting for data
-        setLoading(true);
-        // Get all data from bookings table
-        const { data, error } = await supabase.from('bookings').select('*');
-        
-        // Handle errors
-        if (error) throw error;
-        // Update bookings with data
-        setBookings(data);
-        sortBookings(sortBy, sortAscDesc, data);
-      }
-      // Log error
-      catch (error) {
-        setError(error.message);
-        console.error('Error fetching bookings:', error.message)
-      }
-      finally {
-        // End loading
-        setLoading(false)
-      }
-    };
-
     // Fetch bookings on component mount
     useEffect(() => {
-      fetchBookings(); 
+        getBookings()
     }, []);
+
+    const getBookings = async () => {
+        setLoading(true)
+        let retrievedData = await fetchBookings(); 
+
+        if (retrievedData.error) {
+            setError(retrievedData.error)
+            setLoading(false)
+        }
+        else {
+            setBookings(retrievedData.data)
+            sortBookings(sortBy, sortAscDesc, retrievedData.data);
+            
+        }
+        setLoading(false)
+    }
 
     {/* 
       * Filters bookings based on keywords
+      * @param {string} keyword - 
+      * @param {array} bookings - 
       */}
     const searchBookings = (keyword, bookings) => {
         {/* Return all questions if no keyword has been entered */}

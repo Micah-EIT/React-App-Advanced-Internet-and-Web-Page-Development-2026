@@ -1,11 +1,12 @@
 // Imports
 import UploadFile from "./advancedJS/uploadPhoto.js"
 import PhotoGallery from "./advancedJS/uploadedPhotoGallery.js"
+import RepairCalendar from "./advancedJS/calendar.js"
 
 // Component Function
 function AdvancedJS() {
     // States
-    // Data
+
     // Functions and methods
 
     // UI
@@ -16,27 +17,27 @@ function AdvancedJS() {
             <div className="accordion d-flex flex-column flex-lg-row" id="accordionExample">
             <div className="d-flex flex-lg-column col-lg-2">
                 <h2 className="accordion-header col-6 col-lg-10 m-lg-1" id="headingOne">
-                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo1" aria-expanded="true" aria-controls="collapseOne">
+                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo1" aria-expanded="true" aria-controls="collapseDemo1">
                         Demo 1
                     </button>
                 </h2>
                 <h2 className="accordion-header col-6 col-lg-10 m-lg-1" id="headingTwo">
-                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo2" aria-expanded="false" aria-controls="collapseTwo">
+                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo2" aria-expanded="false" aria-controls="collapseDemo2">
                         Demo 2
                     </button>
                 </h2>
-                <h2 className="accordion-header col-6 col-lg-10 m-lg-1" id="headingOne">
-                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo3" aria-expanded="true" aria-controls="collapseOne">
+                <h2 className="accordion-header col-6 col-lg-10 m-lg-1" id="headingThree">
+                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo3" aria-expanded="false" aria-controls="collapseDemo3">
                         Demo 3
                     </button>
                 </h2>
-                <h2 className="accordion-header col-6 col-lg-10 m-lg-1" id="headingTwo">
-                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo4" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 className="accordion-header col-6 col-lg-10 m-lg-1" id="headingFour">
+                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo4" aria-expanded="false" aria-controls="collapseDemo4">
                         Demo 4
                     </button>
                 </h2>
-                <h2 className="accordion-header col-6 col-lg-10 m-lg-1" id="headingTwo">
-                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo5" aria-expanded="false" aria-controls="collapseTwo">
+                <h2 className="accordion-header col-6 col-lg-10 m-lg-1" id="headingFive">
+                    <button className="btn btn-primary col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDemo5" aria-expanded="false" aria-controls="collapseDemo5">
                         Demo 5
                     </button>
                 </h2>
@@ -60,6 +61,7 @@ function AdvancedJS() {
                 <div className="accordion-item">
                     <div id="collapseDemo3" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div className="accordion-body">
+                            <h1>Demo 3</h1>
                             <UploadFile/>
                             <PhotoGallery/>                     
                         </div>
@@ -68,8 +70,8 @@ function AdvancedJS() {
                 <div className="accordion-item">
                     <div id="collapseDemo4" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div className="accordion-body col-12">
-                            demo 4
-
+                            <h1>Demo 4</h1>
+                            <RepairCalendar/>
                         </div>
                     </div>
                 </div>
