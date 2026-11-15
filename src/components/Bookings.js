@@ -1,114 +1,150 @@
 // Imports
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import dropdownItems from "./data/dropdownItems.json";
 import { fetchBookings } from '../fetchBookings';
 
 // Component Function
 function Bookings() {
     // State
+    // Search/sort/filter states
     const [sortBy, setSortBy] = useState("id");
     const [sortAscDesc, setSortAscDesc] = useState("Asc");
     const [filterWarranty, setFilterWarranty] = useState("All");
     const [filterMake, setFilterMake] = useState("All");
     const [filterFault, setFilterFault] = useState("All");
 
+    // Bookings retrieval states
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [bookings, setBookings] = useState([]);
     const [bookingsToDisplay, setBookingsToDisplay] = useState([]);
 
-    // Functions
-    // Fetch bookings on component mount
-    useEffect(() => {
-        getBookings()
-    }, []);
-
-    const getBookings = async () => {
-        setLoading(true)
+    // Functions and methods
+    /**
+     * Get bookings from Supabase database and store them in the 'bookings' state
+     */
+    const getBookings = useCallback(async () => {
+        // Sets loading state to true
+        // Bookings page will display a loading message while data is being retreived from Supabase
+        setLoading(true);
         let retrievedData = await fetchBookings(); 
 
+        // Handle errors
         if (retrievedData.error) {
-            setError(retrievedData.error)
-            setLoading(false)
+            setError(retrievedData.error);
+            setLoading(false);
         }
         else {
-            setBookings(retrievedData.data)
+            // If there are no errors, store bookings and sort them according to sort criteria
+            setBookings(retrievedData.data);
             sortBookings(sortBy, sortAscDesc, retrievedData.data);
             
-        }
-        setLoading(false)
-    }
+        };
+        // Sets loading state to false, allowing bookings to appear on the GUI
+        setLoading(false);
+    }, [sortAscDesc, sortBy]);
 
-    {/* 
-      * Filters bookings based on keywords
-      * @param {string} keyword - 
-      * @param {array} bookings - 
-      */}
+    // Fetch bookings on component mount
+    useEffect(() => {
+        getBookings();
+    }, [getBookings]);
+
+    /**  
+      * Filters bookings based on keywords, so only bookings containing the keyword are returned.
+      * Checks all values in the booking object.
+      * @param {string} keyword - The string that will be searched for in booking fields
+      * @param {array} bookings - Bookings data, an array of booking objects with booking information
+      **/
     const searchBookings = (keyword, bookings) => {
-        {/* Return all questions if no keyword has been entered */}
-        let filteredBookings = []
-
         if (keyword) {
-            {/* Return all questions where the question or answer contains the keyword */}
-            let filteredBookings = []
+            // Return bookings where any of the booking fields contains the keyword
+            let filteredBookings = [];
 
             bookings.forEach( (booking) => 
             {
                 if (containsKeyword(booking, keyword)) {
-                    filteredBookings.push(booking)
+                    filteredBookings.push(booking);
                 }
             })
 
-            setBookingsToDisplay(filteredBookings)
-            return
+            setBookingsToDisplay(filteredBookings);
+            return;
         }
         
-        setBookingsToDisplay(bookings)
+        // Return all questions if no keyword has been entered
+        setBookingsToDisplay(bookings);
     }
 
+    /**  
+      * Checks if any of the values in an object contain a keyword
+      * @param {string} keyword - The string that will be searched for in the object values
+      * @param {object} object - the object being searched
+      * @returns {boolean} returns true if the object contains the keyword, or false if not
+      **/
     const containsKeyword = (object, keyword) => {
-        let values = Object.values(object)
-        let containsKeyword = false
+        let values = Object.values(object);
+        let containsKeyword = false;
 
         values.forEach((value) => {
             if (value) {
                 if (value.toString().toLowerCase().includes(keyword.toLowerCase())) {
-                    containsKeyword = true
-                }
-            }
-        })
+                    containsKeyword = true;
+                };
+            };
+        });
 
-        return containsKeyword
+        return containsKeyword;
     }
 
+    /**  
+      * Sorts bookings by a category, numerically or alphabetically
+      * @param {string} sortBy - The category being sorted by. Must be one of the keys in the booking object. 
+      * @param {string} sortAscDesc - Whether to sort in ascending (Asc) or descending (Desc) order. 
+      *                               Only takes values 'Asc' and 'Desc'
+      * @param {array} bookings - Bookings data, an array of booking objects with booking information
+      * */
     const sortBookings = (sortBy, sortAscDesc, bookings) => {
-        let sortedBookings = bookings
+        let sortedBookings = bookings;
 
         if (sortedBookings) {
+            // Sort first name and last name alphabetically
             if (sortBy.includes('name')) {
               sortedBookings = sortedBookings.sort(
                 (booking1, booking2) => (booking1[sortBy].localeCompare(booking2[sortBy]))
               );
             }
+            // Sort all other categories numerically
             else {
               sortedBookings = sortedBookings.sort(
                 (booking1, booking2) => (booking1[sortBy] > booking2[sortBy]) ? 1: -1
               );
-            }
-
+            };
+            // Bookings are automatically sorted in ascending order
+            // To get the descending order, the order is reversed
             if (sortAscDesc === 'Desc') {
                 sortedBookings = sortedBookings.reverse();
-            }
+            };
         }
 
-        setBookingsToDisplay(sortedBookings)
+        setBookingsToDisplay(sortedBookings);
     }
 
+    /**  
+      * Filters bookings by warranty, make, and fault. 
+      * @param {string} warranty - Whether the phone is under warranty. Allowed values are: 
+      *                           'All' - don't filter by warranty,
+      *                           'true' - only show bookings for phones under warranty
+      *                           'false' - only show bookings for phones not under warranty
+      * @param {string} make - The phone's make (i.e. Apple, Samsung, Nokia). Use value 'All' to not filter by make. 
+      * @param {string} fault - The category of fault (i.e. Charging, Battery, Screen). Use value 'All' to not filter by fault. 
+      * @param {array} bookings - Bookings data, an array of booking objects with booking information
+      * */
     const filterBookings = (warranty, make, fault, bookings) => {
         let filteredBookings = bookings
 
+        // Skips filter if 'All' is selected
         if (warranty !== 'All') {
-            filteredBookings = bookings.filter((booking) => booking.has_warranty.toString() === warranty);
+            filteredBookings = filteredBookings.filter((booking) => booking.has_warranty.toString() === warranty);
         }
 
         if (make !== 'All') {
@@ -130,7 +166,7 @@ function Bookings() {
             <h1 className='mb-3'>Bookings</h1>
             <div>
              <form>
-               <div className='d-flex flex-column flex-lg-row align-items-end'>
+               <div className='d-flex flex-row flex-wrap align-items-end'>
                  <div className='col-lg-6 col-12 me-2'>
                     <input
                     type="text"

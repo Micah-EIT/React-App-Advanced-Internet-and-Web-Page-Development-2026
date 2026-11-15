@@ -4,10 +4,13 @@ import { supabase } from "../supabaseClient.js";
 
 // Component function
 function PhotoGallery() {
-    //States
+    // States
     const [photos, setPhotos] = useState([]);
 
     // Functions and methods
+    /**
+     * Retreives images from Supabase storage bucket and stores them in the 'photos' state
+     **/
     const fetchImages = async () => {
         try {
             const { data, error } = await supabase
@@ -20,11 +23,11 @@ function PhotoGallery() {
             setPhotos(data);
         }
         catch (error) {
-            console.error('Error fetching bookings:', error.message)
+            console.error('Error fetching bookings:', error.message);
         }
     }
 
-    // Fetch bookings on component mount
+    // Fetch images on component mount
     useEffect(() => {
         fetchImages(); 
     }, []);
@@ -34,15 +37,16 @@ function PhotoGallery() {
         <div>
             <h2 className="my-2">Uploaded photos: </h2>
             <div className="d-flex flex-row flex-wrap">
-            {photos.map((photo) => {
-            return (<img 
-                key={photo.filename} 
-                src={supabase.storage.from('repair_images').getPublicUrl(photo.name).data.publicUrl}
-                className="m-2"/>
-            )})}
+                {photos.map((photo) => {
+                return (<img 
+                    key={photo.id} 
+                    src={supabase.storage.from('repair_images').getPublicUrl(photo.name).data.publicUrl}
+                    className="m-2 mw-100"
+                    alt={photo.filename}/>
+                )})}
             </div>
         </div>
     );
-}
+};
 
 export default PhotoGallery;

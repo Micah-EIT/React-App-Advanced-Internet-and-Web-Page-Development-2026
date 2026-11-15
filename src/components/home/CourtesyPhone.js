@@ -3,7 +3,7 @@ import { useState } from "react";
 import dropdownItems from "../data/dropdownItems.json"
 
 // Component Function
-function CourtesyPhone( { passDataToParent }) {
+function CourtesyPhone( { passDataToParent } ) {
     // States
     const [selectedPhone, setSelectedPhone] = useState(0);
     const [selectedCharger, setSelectedCharger] = useState(0);

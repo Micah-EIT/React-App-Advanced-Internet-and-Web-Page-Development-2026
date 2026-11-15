@@ -1,22 +1,21 @@
+// Imports
 import { supabase } from "../supabaseClient.js";
 
-// Upload a file to Supabase
-function UploadFile(file) {
-    // States
-
+// Component function
+function UploadFile() {
     // Functions and methods
-    {/*Upload file to repair_images bucket in supabase
-    @param {} uploadFile - the file being uploaded
-    */}
+    /**
+     * Upload file to repair_images bucket in supabase
+     * @param {File} uploadFile - the file being uploaded
+    */
     async function upload(uploadFile) {
-        console.log(uploadFile)
         // Upload to repair_images buckets in Supabase with specified file path
         let filepath = uploadFile.name;
 
         // Upload file with upsert: overwrites the file if it already exists
-        const { data, error } = await supabase.storage.from('repair_images').upload(filepath, uploadFile, 
+        const { error } = await supabase.storage.from('repair_images').upload(filepath, uploadFile, 
             {cacheControl: '3600', upsert: true}
-        )
+        );
 
         if (error) {
             // Handle error
@@ -31,19 +30,22 @@ function UploadFile(file) {
         }
     }
 
-    {/* 
-        Upload file when form is submitted
-        @param {EventArgs} event - event arguments, used to get uploaded file
-    */}
+    /** 
+     * Upload file when form is submitted
+     * @param {EventArgs} event - event arguments, used to get uploaded file
+    */
     const handleSubmit = async (event) => {
+        // Prevent default behaviour on form submit
         event.preventDefault();
+
+        // Get file information from event arguments
         const uploadFile = event.target.fileInput.files[0];
 
         // Check if a file was uploaded
         if (!uploadFile) {
             alert('Please upload a file');
             return;
-        }
+        };
 
         // Upload file to Supabase
         upload(uploadFile);
@@ -58,7 +60,7 @@ function UploadFile(file) {
             <p>Upload a photo</p>
             <form onSubmit={handleSubmit} className="d-flex flex-column">
                 <input type="file" name="fileInput" className="form-control mb-2"></input>
-                <div className="col-1">
+                <div className="col-4 col-lg-1">
                     <button type="submit" className="form-control">Upload</button>
                 </div>
             </form>
