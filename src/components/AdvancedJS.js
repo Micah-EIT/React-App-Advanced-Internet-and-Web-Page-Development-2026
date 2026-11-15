@@ -10,6 +10,17 @@ function AdvancedJS() {
     return (
     <>
         <div style={{minHeight: '60vh'}}>
+            <div className="text-center bg-warning p-2 mb-3">
+                <h2>Statement of authenticity</h2>
+                <p>I confirm that:</p>
+                <ul>
+                    <li style={{listStylePosition: 'inside'}}>This is an original assessment and is entirely my own work.</li>
+                    <li style={{listStylePosition: 'inside'}}>It contains no material previously published or written by another person or myself except where
+                    due acknowledgement is made in the text.</li>
+                    <li style={{listStylePosition: 'inside'}}>No material which to a substantial extent, has been submitted for any other academic course, is
+                    included without acknowledgement.</li>
+                </ul>
+            </div>
             <h1 className="mx-2 my-3 text-center">Advanced JS</h1>
             <div className="accordion d-flex flex-column flex-lg-row" id="accordionExample">
             <div className="d-flex flex-lg-column flex-wrap col-lg-2 align-items-lg-evenly justify-content-center justify-content-lg-start">
